@@ -1,7 +1,6 @@
 package Citysimulator;
 
-import java.awt.Font;
-import java.awt.Image;
+import java.awt.*;
 import javax.swing.*;
 
 public class UIDisplay {
@@ -20,6 +19,8 @@ public class UIDisplay {
     private static int happinessStat;
     private static int securityStat;
     private static int populationStat;
+
+    static JPanel UIPanel = new JPanel();
 
     public UIDisplay(int UIHeight, int PanelWidth, boolean Startup) {
         if (Startup) {
@@ -63,17 +64,11 @@ public class UIDisplay {
         population.setBounds(((PanelWidth*4)/5) - 32, (UIHeight/2) - 32, 150, 60);
         population.setFont(new Font("Times New Roman", Font.BOLD, 18));
         
-        GridDisplay.mainPanel.add(funds);
-        GridDisplay.mainPanel.add(happiness);
-        GridDisplay.mainPanel.add(security);
-        GridDisplay.mainPanel.add(population);
-    }
-    
-    public static void main(String[] args) {
-        JButton b = new JButton();
-        GridDisplay.mainPanel.add(b);
-        GridDisplay.mainPanel.revalidate();
-    }
+        UIPanel.add(funds);
+        UIPanel.add(happiness);
+        UIPanel.add(security);
+        UIPanel.add(population);
+        
 
-
+    }
 }

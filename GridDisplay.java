@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 public class GridDisplay { 
 
@@ -20,6 +21,8 @@ public class GridDisplay {
 
     private static final int PANEL_WIDTH = (GRID_COLS * CELL_SIZE) + BUILDING_SELECTOR_WIDTH; // width of window
     private static final int PANEL_HEIGHT = (GRID_ROWS * CELL_SIZE) + UI_HEIGHT;  // height of window
+
+    
 
     static GridPanel mainPanel = new GridPanel(); 
     static JFrame frame = new JFrame("CitySim"); 
@@ -97,17 +100,24 @@ public class GridDisplay {
     }
 
     public static void main(String[] args) {
+        
         SwingUtilities.invokeLater(() -> {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            frame.add(mainPanel);
-            mainPanel.setLayout(null);
+            mainPanel.setLayout(new BorderLayout());
 
+            
+            MenuDisplay menu = new MenuDisplay();
+            mainPanel.add(menu.menuPanel, BorderLayout.EAST);
+
+            UIDisplay ui = new UIDisplay(UI_HEIGHT, PANEL_WIDTH, true);
+            mainPanel.add(ui.UIPanel, BorderLayout.NORTH);
+            frame.setContentPane(mainPanel);
             frame.pack();
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
 
-            UIDisplay ui = new UIDisplay(UI_HEIGHT, PANEL_WIDTH, true);
+            
         });
     }
 }
