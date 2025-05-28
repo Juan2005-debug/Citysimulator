@@ -9,11 +9,6 @@ public class UIDisplay {
     private static JLabel security;
     private static JLabel population;
 
-    private static ImageIcon fIcon;
-    private static ImageIcon hIcon;
-    private static ImageIcon sIcon;
-    private static ImageIcon pIcon;
-
     private static int fundsStat;
     private static int fundsGain;
     private static int happinessStat;
@@ -22,7 +17,7 @@ public class UIDisplay {
 
     static JPanel UIPanel = new JPanel();
 
-    public UIDisplay(int UIHeight, int PanelWidth, boolean Startup) {
+    public UIDisplay(int uiHeight, int panelWidth, boolean Startup) {
         if (Startup) {
             fundsStat = 5000;
             fundsGain = 100;
@@ -31,44 +26,31 @@ public class UIDisplay {
             populationStat = 0;
         }
 
-        ImageIcon fundOriginal = new ImageIcon("Citysimulator\\mn.jpg");
-        Image fImage =fundOriginal.getImage(); 
-        Image fScaledImage = fImage.getScaledInstance(32, 32, Image.SCALE_SMOOTH);
-        fIcon = new ImageIcon(fScaledImage);
+        setDisplayPanel(uiHeight, panelWidth);
+        updateStats(uiHeight, panelWidth);
 
-        ImageIcon happinessOriginal = new ImageIcon("Citysimulator\\happ.jpg");
-        Image hImage =happinessOriginal.getImage(); 
-        Image hScaledImage = hImage.getScaledInstance(32, 32, Image.SCALE_SMOOTH);
-        hIcon = new ImageIcon(hScaledImage);
+    }
 
-        ImageIcon securityOriginal = new ImageIcon("Citysimulator\\sc.jpg");
-        Image sImage = securityOriginal.getImage(); 
-        Image sScaledImage = sImage.getScaledInstance(32, 32, Image.SCALE_SMOOTH);
-        sIcon = new ImageIcon(sScaledImage);
+    static void setDisplayPanel(int height, int width) {
+        UIPanel.setLayout(null); 
+        UIPanel.setPreferredSize(new Dimension(width, height)); 
+        UIPanel.setBackground(Color.LIGHT_GRAY);
+    }
 
-        ImageIcon populationOriginal = new ImageIcon("Citysimulator/pops.jpg");
-        Image pImage = populationOriginal.getImage(); 
-        Image pScaledImage = pImage.getScaledInstance(32, 32, Image.SCALE_SMOOTH);
-        pIcon = new ImageIcon(pScaledImage);
+    static void updateStats(int uiHeight, int panelWidth) {
 
-        funds = new JLabel(Integer.toString(fundsStat) + '(' + Integer.toString(fundsGain) + ')', fIcon, SwingConstants.LEFT);
-        funds.setBounds((PanelWidth/5) - 32, (UIHeight/2) - 32, 150, 60);
-        funds.setFont(new Font("Times New Roman", Font.BOLD, 18));
-        happiness = new JLabel(happinessStat + "%", hIcon, SwingConstants.LEFT);
-        happiness.setBounds(((PanelWidth*2)/5) - 32, (UIHeight/2) - 32, 150, 60);
-        happiness.setFont(new Font("Times New Roman", Font.BOLD, 18));
-        security = new JLabel(securityStat + "%", sIcon, SwingConstants.LEFT);
-        security.setBounds(((PanelWidth*3)/5) - 32, (UIHeight/2) - 32, 150, 60);
-        security.setFont(new Font("Times New Roman", Font.BOLD, 18));
-        population = new JLabel(populationStat + "%", pIcon, SwingConstants.LEFT);
-        population.setBounds(((PanelWidth*4)/5) - 32, (UIHeight/2) - 32, 150, 60);
-        population.setFont(new Font("Times New Roman", Font.BOLD, 18));
-        
-        UIPanel.add(funds);
-        UIPanel.add(happiness);
-        UIPanel.add(security);
-        UIPanel.add(population);
-        
+        funds = new JLabel(Integer.toString(fundsStat) + '(' + Integer.toString(fundsGain) + ')', ImageManager.getIM().getStatIcon("f"), SwingConstants.LEFT);
+        happiness = new JLabel(happinessStat + "%", ImageManager.getIM().getStatIcon("h"), SwingConstants.LEFT);
+        security = new JLabel(securityStat + "%", ImageManager.getIM().getStatIcon("s"), SwingConstants.LEFT);
+        population = new JLabel(populationStat + "%", ImageManager.getIM().getStatIcon("p"), SwingConstants.LEFT);
+
+
+        JLabel[] labels = {funds, happiness, security, population};
+        for (int i = 0; i < labels.length; i++) {
+            labels[i].setBounds(( panelWidth * ( i + 1 ) / 5) - 32, ( uiHeight / 2 ) - 32, 150, 60 );
+            labels[i].setFont(new Font("Times New Roman", Font.BOLD, 18));
+            UIPanel.add(labels[i]);
+        }
 
     }
 }

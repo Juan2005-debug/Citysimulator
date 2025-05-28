@@ -13,16 +13,16 @@ public class MenuDisplay {
 
     //Table for buttons in menu
     static MenuButton[][] MenuList = {
-        {new ItemButton("happ.jpg", 0), new ItemButton("happ.jpg", 0), 
-            new ItemButton("happ.jpg", 0)},
-        {new WideButton("happ.jpg")}};
+        {new ItemButton("happ.png", 0), new ItemButton("happ.png", 0), 
+            new ItemButton("happ.png", 0)},
+        {new WideButton("happ.png")}};
     
     /**
      * Create panel and add buttons.
      * @post panel is created, buttons are added in grid 
      */
-    public MenuDisplay() {
-        setMenuPanel(250, 700, 0, 0);
+    public MenuDisplay(int width, int height) {
+        setMenuPanel(width, height);
         setGridLayout(5);
         addButtonsToMenu();
     }
@@ -36,8 +36,8 @@ public class MenuDisplay {
      * @pre x, y, width and height are positive
      * //TODO: Setup handling of negative/zero numbers
      */
-    static void setMenuPanel(int width, int height, int x, int y) {
-        menuPanel.setBounds(x, y, width, height);
+    static void setMenuPanel(int width, int height) {
+        menuPanel.setPreferredSize(new Dimension(width, height));
     }
 
     /**

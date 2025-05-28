@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.*;
-import javax.swing.border.Border;
 
 public class GridDisplay { 
 
@@ -12,19 +11,19 @@ public class GridDisplay {
     private static final int GRID_COLS = 15;  // # of grid columns
     private static final int CELL_SIZE = 40; // Side dimension of cells
     private static final Color GRID_LINE_COLOR = Color.BLACK; // Color of grid lines 
-    private static final int BUILDING_SELECTOR_WIDTH = 250; // Width of Side Building Selector Element
+    private static final int BUILDING_SELECTOR_WIDTH = 200; // Width of Side Building Selector Element
     private static final int UI_HEIGHT = 100; // Height of Upper UI Element
     private static final Color BACKGROUND_COLOR = Color.WHITE; // Background Color
 
     private static final Color DEFAULT_CELL_COLOR = Color.GREEN; // Default color for cells
     private static final Color CLICKED_CELL_COLOR = Color.ORANGE;   // Color for clicked cells
 
-    private static final int PANEL_WIDTH = (GRID_COLS * CELL_SIZE) + BUILDING_SELECTOR_WIDTH; // width of window
-    private static final int PANEL_HEIGHT = (GRID_ROWS * CELL_SIZE) + UI_HEIGHT;  // height of window
+    private static final int PANEL_WIDTH = (GRID_COLS * CELL_SIZE); // width of window
+    private static final int PANEL_HEIGHT = (GRID_ROWS * CELL_SIZE);  // height of window
 
     
 
-    static GridPanel mainPanel = new GridPanel(); 
+    static GridPanel gridPanel = new GridPanel(); 
     static JFrame frame = new JFrame("CitySim"); 
 
     static class GridPanel extends JPanel {
@@ -48,7 +47,7 @@ public class GridDisplay {
                 public void mouseClicked(MouseEvent e) {
                     // Calculate which cell was clicked
                     int clickedCol = e.getX() / CELL_SIZE;
-                    int clickedRow = (e.getY() - UI_HEIGHT) / CELL_SIZE;
+                    int clickedRow = e.getY() / CELL_SIZE;
 
                     // Check if the click is within the grid boundaries
                     if (clickedRow >= 0 && clickedRow < GRID_ROWS &&
@@ -80,7 +79,7 @@ public class GridDisplay {
             for (int r = 0; r < GRID_ROWS; r++) {
                 for (int c = 0; c < GRID_COLS; c++) {
                     g2d.setColor(cellColors[r][c]);
-                    g2d.fillRect(c * CELL_SIZE, (r * CELL_SIZE) + UI_HEIGHT, CELL_SIZE, CELL_SIZE);
+                    g2d.fillRect(c * CELL_SIZE, (r * CELL_SIZE), CELL_SIZE, CELL_SIZE);
                 }
             }
 
@@ -89,12 +88,12 @@ public class GridDisplay {
             // Draw horizontal lines
             for (int i = 0; i <= GRID_ROWS; i++) {
                 int y = i * CELL_SIZE;
-                g2d.drawLine(0, y + UI_HEIGHT, PANEL_WIDTH-BUILDING_SELECTOR_WIDTH, y + UI_HEIGHT);
+                g2d.drawLine(0, y, PANEL_WIDTH, y );
             }
             // Draw vertical lines
             for (int j = 0; j <= GRID_COLS; j++) {
                 int x = j * CELL_SIZE;
-                g2d.drawLine(x, UI_HEIGHT, x, PANEL_HEIGHT);
+                g2d.drawLine(x, 0, x, PANEL_HEIGHT);
             }
         }
     }
@@ -104,10 +103,13 @@ public class GridDisplay {
         SwingUtilities.invokeLater(() -> {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+            JPanel mainPanel = new JPanel();
             mainPanel.setLayout(new BorderLayout());
 
+            mainPanel.add(gridPanel, BorderLayout.CENTER);
+
             
-            MenuDisplay menu = new MenuDisplay();
+            MenuDisplay menu = new MenuDisplay(BUILDING_SELECTOR_WIDTH, PANEL_HEIGHT);
             mainPanel.add(menu.menuPanel, BorderLayout.EAST);
 
             UIDisplay ui = new UIDisplay(UI_HEIGHT, PANEL_WIDTH, true);
@@ -117,7 +119,6 @@ public class GridDisplay {
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
 
-            
         });
     }
 }
