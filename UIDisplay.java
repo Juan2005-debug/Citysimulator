@@ -31,22 +31,22 @@ public class UIDisplay {
             populationStat = 0;
         }
 
-        ImageIcon fundOriginal = new ImageIcon("Citysimulator\\mn.jpg");
+        ImageIcon fundOriginal = new ImageIcon("mn.jpg");
         Image fImage =fundOriginal.getImage(); 
         Image fScaledImage = fImage.getScaledInstance(32, 32, Image.SCALE_SMOOTH);
         fIcon = new ImageIcon(fScaledImage);
 
-        ImageIcon happinessOriginal = new ImageIcon("Citysimulator\\happ.jpg");
+        ImageIcon happinessOriginal = new ImageIcon("happ.jpg");
         Image hImage =happinessOriginal.getImage(); 
         Image hScaledImage = hImage.getScaledInstance(32, 32, Image.SCALE_SMOOTH);
         hIcon = new ImageIcon(hScaledImage);
 
-        ImageIcon securityOriginal = new ImageIcon("Citysimulator\\sc.jpg");
+        ImageIcon securityOriginal = new ImageIcon("sc.jpg");
         Image sImage = securityOriginal.getImage(); 
         Image sScaledImage = sImage.getScaledInstance(32, 32, Image.SCALE_SMOOTH);
         sIcon = new ImageIcon(sScaledImage);
 
-        ImageIcon populationOriginal = new ImageIcon("Citysimulator/pops.jpg");
+        ImageIcon populationOriginal = new ImageIcon("pops.jpg");
         Image pImage = populationOriginal.getImage(); 
         Image pScaledImage = pImage.getScaledInstance(32, 32, Image.SCALE_SMOOTH);
         pIcon = new ImageIcon(pScaledImage);
