@@ -4,10 +4,15 @@ import java.awt.*;
 import javax.swing.*;
 
 public class UIDisplay {
-    private static JLabel funds;
-    private static JLabel happiness;
-    private static JLabel security;
-    private static JLabel population;
+    private static JLabel fundsLabel;
+    private static JLabel happinessLabel;
+    private static JLabel securityLabel;
+    private static JLabel populationLabel;
+
+    private static ImageIcon fIcon;
+    private static ImageIcon hIcon;
+    private static ImageIcon sIcon;
+    private static ImageIcon pIcon;
 
     private static int fundsStat;
     private static int fundsGain;
