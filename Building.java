@@ -13,7 +13,7 @@ public class Building {
         this.cost = cost;
         // add image scaling
         ImageIcon originalIcon = new ImageIcon(getClass().getResource(imagePath));
-        this.imageIcon = new ImageIcon();
+        this.imageIcon = new ImageIcon(originalIcon.getImage());
     }
 
     public String getName() {
