@@ -1,14 +1,12 @@
-package src.main.java.com.softwaredesign;
+package com.softwaredesign;
 
-import javax.swing.ImageIcon;
-import java.util.Objects;
 import java.awt.Color;
 
 public abstract class Building {
     private final String name;
     //private ImageIcon imageIcon; uncomment for images
     private int cost;
-    private final Color color;
+    private final Color color = Color.BLACK;
     // happiness, energy, etc
 
     public Building(String name, String imagePath, int cost) {
@@ -17,7 +15,6 @@ public abstract class Building {
         // add image scaling
         /* ImageIcon originalIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource(imagePath)));
         this.imageIcon = new ImageIcon(originalIcon.getImage()); */
-        this.color = color;
     }
 
     public String getName() {

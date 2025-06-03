@@ -1,4 +1,4 @@
-package src.main.java.com.softwaredesign;
+package com.softwaredesign;
 
 import java.awt.Color;
 
