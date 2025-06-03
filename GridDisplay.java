@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.*;
-import javax.swing.border.Border;
 
 public class GridDisplay { 
 
@@ -16,8 +15,8 @@ public class GridDisplay {
     private static final int UI_HEIGHT = 100; // Height of Upper UI Element
     private static final Color BACKGROUND_COLOR = Color.WHITE; // Background Color
 
-    private static final Color DEFAULT_CELL_COLOR = Color.GREEN; // Default color for cells
-    private static final Color CLICKED_CELL_COLOR = Color.ORANGE;   // Color for clicked cells
+    // private static final Color DEFAULT_CELL_COLOR = Color.GREEN; // Default color for cells
+    // private static final Color CLICKED_CELL_COLOR = Color.ORANGE;   // Color for clicked cells
 
     private static final int PANEL_WIDTH = (GRID_COLS * CELL_SIZE) + BUILDING_SELECTOR_WIDTH; // width of window
     private static final int PANEL_HEIGHT = (GRID_ROWS * CELL_SIZE) + UI_HEIGHT;  // height of window
@@ -118,7 +117,7 @@ public class GridDisplay {
                                 CELL_SIZE, CELL_SIZE, this);
                     } else {
                         // no building on cell
-                        g2d.setColor(DEFAULT_CELL_COLOR);
+                        g2d.setColor(Color.GREEN);
                         g2d.fillRect(c * CELL_SIZE, (r * CELL_SIZE) + UI_HEIGHT, CELL_SIZE, CELL_SIZE);
                     }
                 }
@@ -154,10 +153,10 @@ public class GridDisplay {
             mainPanel.setLayout(new BorderLayout());
 
             MenuDisplay menu = new MenuDisplay();
-            mainPanel.add(menu.menuPanel, BorderLayout.EAST);
+            mainPanel.add(MenuDisplay.menuPanel, BorderLayout.EAST);
 
             UIDisplay ui = new UIDisplay(UI_HEIGHT, PANEL_WIDTH, true);
-            mainPanel.add(ui.UIPanel, BorderLayout.NORTH);
+            mainPanel.add(UIDisplay.UIPanel, BorderLayout.NORTH);
 
             frame.setContentPane(mainPanel);
             frame.pack();

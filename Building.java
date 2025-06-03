@@ -1,9 +1,10 @@
 package Citysimulator;
 
 import javax.swing.ImageIcon;
+import java.util.Objects;
 
 public class Building {
-    private String name;
+    private final String name;
     private ImageIcon imageIcon;
     private int cost;
     // happiness, energy, etc
@@ -12,7 +13,7 @@ public class Building {
         this.name = name;
         this.cost = cost;
         // add image scaling
-        ImageIcon originalIcon = new ImageIcon(getClass().getResource(imagePath));
+        ImageIcon originalIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource(imagePath)));
         this.imageIcon = new ImageIcon(originalIcon.getImage());
     }
 
