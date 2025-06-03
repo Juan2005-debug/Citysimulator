@@ -1,7 +1,8 @@
-package com.softwaredesign;
+package com.Group57;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
 
 public class ImageManager {
     private static final String[] statImages = {"mn.png", "happ.png", "sc.png", "pops.png"};

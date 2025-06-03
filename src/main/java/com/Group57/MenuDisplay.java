@@ -1,7 +1,13 @@
-package com.softwaredesign;
+package com.Group57;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JPanel;
 
 /**
  * Displays the menu with buttons in a grid formation in order to build or remove objects.
