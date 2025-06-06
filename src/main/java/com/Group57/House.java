@@ -5,7 +5,7 @@ import java.awt.Color;
 
 public class House extends Building {
     public static final String HOUSE_NAME = "House";
-    private static final String HOUSE_IMAGE_PATH = "/house.png";
+    private static final String HOUSE_IMAGE_PATH = "images/house.png";
     public static final int HOUSE_COST = 25;
     public static final Color HOUSE_COLOR = Color.ORANGE;
 

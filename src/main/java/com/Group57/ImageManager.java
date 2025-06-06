@@ -5,7 +5,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class ImageManager {
-    private static final String[] statImages = {"mn.png", "happ.png", "sc.png", "pops.png"};
+    private static final String[] statImages = {"images/mn.png", "images/happ.png", "images/sc.png", "images/pops.png"};
     private static final ImageManager IM = new ImageManager();
 
     private static ImageIcon fIcon;

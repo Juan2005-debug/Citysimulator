@@ -19,9 +19,9 @@ public class MenuDisplay {
 
     //Table for buttons in menu
     static MenuButton[][] MenuList = {
-        {new ItemButton("happ.png", 0), new ItemButton("happ.png", 0), 
-            new ItemButton("happ.png", 0)},
-        {new WideButton("happ.png")}};
+        {new ItemButton("images/happ.png", 0), new ItemButton("images/happ.png", 0),
+            new ItemButton("images/happ.png", 0)},
+        {new WideButton("images/happ.png")}};
     
     /**
      * Create panel and add buttons.
